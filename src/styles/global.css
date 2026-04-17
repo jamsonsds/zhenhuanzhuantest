@@ -1,0 +1,220 @@
+:root {
+  font-family: 'PingFang SC', 'Microsoft YaHei', -apple-system, BlinkMacSystemFont, 'Segoe UI', sans-serif;
+  color: #1f1a17;
+  background: #f6f2ea;
+}
+
+* {
+  box-sizing: border-box;
+}
+
+body {
+  margin: 0;
+  min-height: 100vh;
+}
+
+h1,
+h2,
+h3,
+p {
+  margin: 0;
+}
+
+.page-shell {
+  padding: 24px 16px;
+  display: flex;
+  justify-content: center;
+}
+
+.panel {
+  width: min(860px, 100%);
+  background: #fffdfa;
+  border: 1px solid #e4dac8;
+  border-radius: 18px;
+  padding: 20px;
+  display: flex;
+  flex-direction: column;
+  gap: 18px;
+}
+
+.subtitle {
+  color: #6b625a;
+}
+
+.stack {
+  display: flex;
+  flex-direction: column;
+  gap: 14px;
+}
+
+.notice-list {
+  margin: 0;
+  padding-left: 18px;
+  line-height: 1.7;
+  color: #4f4741;
+}
+
+.primary-btn,
+.ghost-btn,
+.option-btn,
+.almanac-card,
+.text-link {
+  border-radius: 12px;
+  padding: 12px 14px;
+  border: 1px solid transparent;
+  cursor: pointer;
+  font-size: 15px;
+  text-decoration: none;
+}
+
+.primary-btn {
+  background: #7d2020;
+  color: #fff;
+}
+
+.primary-btn:disabled {
+  opacity: 0.4;
+  cursor: not-allowed;
+}
+
+.ghost-btn {
+  background: #f8f1e6;
+  border-color: #e3d2ba;
+}
+
+.question-title {
+  line-height: 1.6;
+}
+
+.options {
+  display: grid;
+  gap: 10px;
+}
+
+.option-btn {
+  background: #fff;
+  border-color: #e9dfd1;
+  text-align: left;
+}
+
+.option-btn.selected {
+  border-color: #7d2020;
+  background: #fef6f6;
+}
+
+.row-actions {
+  display: flex;
+  gap: 10px;
+  flex-wrap: wrap;
+}
+
+.disclaimer {
+  color: #6e655d;
+  font-size: 14px;
+  line-height: 1.6;
+}
+
+.progress-wrapper {
+  display: flex;
+  flex-direction: column;
+  gap: 8px;
+}
+
+.progress-text {
+  color: #5b534c;
+  font-size: 14px;
+}
+
+.progress-track {
+  height: 8px;
+  border-radius: 999px;
+  background: #efe3d0;
+}
+
+.progress-fill {
+  height: 100%;
+  background: #a63f3f;
+  border-radius: inherit;
+}
+
+.loading-dot {
+  width: 56px;
+  height: 56px;
+  border: 4px solid #edd9c7;
+  border-top-color: #8f2a2a;
+  border-radius: 50%;
+  animation: spin 0.9s linear infinite;
+}
+
+@keyframes spin {
+  to {
+    transform: rotate(360deg);
+  }
+}
+
+.result-section {
+  display: flex;
+  flex-direction: column;
+  gap: 8px;
+  padding-bottom: 14px;
+  border-bottom: 1px dashed #e8dfd3;
+}
+
+.nearby-list {
+  margin: 0;
+  padding-left: 18px;
+}
+
+.radar-box {
+  width: min(320px, 100%);
+}
+
+.radar-box svg {
+  width: 100%;
+  height: auto;
+}
+
+.radar-ring {
+  fill: none;
+  stroke: #e4d8c5;
+  stroke-width: 1;
+}
+
+.radar-shape {
+  fill: rgba(125, 32, 32, 0.3);
+  stroke: #7d2020;
+  stroke-width: 2;
+}
+
+.card-wall {
+  display: grid;
+  grid-template-columns: repeat(auto-fill, minmax(110px, 1fr));
+  gap: 10px;
+}
+
+.almanac-card {
+  background: #fff;
+  border-color: #e6d9c8;
+}
+
+.almanac-card.active {
+  border-color: #8f2a2a;
+  background: #fdf2f2;
+}
+
+.text-link {
+  padding: 0;
+  color: #7d2020;
+}
+
+@media (max-width: 640px) {
+  .panel {
+    border-radius: 14px;
+    padding: 16px;
+  }
+
+  .row-actions > * {
+    flex: 1;
+    min-width: 130px;
+  }
+}
