@@ -1,4 +1,5 @@
 import { Navigate, Route, Routes } from 'react-router-dom';
+import { SpeedInsights } from '@vercel/speed-insights/react';
 import { TestProvider, useTestSession } from './components/TestContext';
 import AlmanacPage from './pages/AlmanacPage';
 import GeneratePage from './pages/GeneratePage';
@@ -56,6 +57,7 @@ export default function App() {
         <Route path="/almanac" element={<AlmanacPage />} />
         <Route path="*" element={<Navigate to="/" replace />} />
       </Routes>
+      <SpeedInsights />
     </TestProvider>
   );
 }
