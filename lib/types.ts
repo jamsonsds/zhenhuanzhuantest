@@ -1,17 +1,29 @@
 export const DIMENSION_KEYS = ['strategy', 'ambition', 'guard', 'empathy', 'control', 'emotion', 'principle', 'loyalty'] as const;
 
+export const CHARACTER_IDS = [
+  'zhenhuan',
+  'huafei',
+  'empress',
+  'meizhuang',
+  'anlingrong',
+  'jingfei',
+  'caoguiren',
+  'chuner',
+  'emperor',
+  'queenmother',
+  'supeisheng',
+  'wenshichu',
+  'liuzhu',
+  'cuijinxi',
+  'guojunwang'
+] as const;
+
 export type DimensionKey = (typeof DIMENSION_KEYS)[number];
-export type QuestionType = 'standard' | 'scenario';
+export type CharacterId = (typeof CHARACTER_IDS)[number];
 
 export interface DimensionMeta {
   key: DimensionKey;
   label: string;
-}
-
-export interface StandardOption {
-  id: string;
-  text: string;
-  level: 1 | 2 | 3 | 4;
 }
 
 export interface ScenarioOption {
@@ -20,32 +32,23 @@ export interface ScenarioOption {
   scores: Partial<Record<DimensionKey, 1 | 2 | 3 | 4 | 5>>;
 }
 
-export interface StandardQuestion {
-  id: string;
-  type: 'standard';
-  text: string;
-  dimension: DimensionKey;
-  reverse?: boolean;
-  options: StandardOption[];
-}
-
 export interface ScenarioQuestion {
   id: string;
   type: 'scenario';
   text: string;
-  options: ScenarioOption[];
+  options: [ScenarioOption, ScenarioOption, ScenarioOption, ScenarioOption];
 }
 
-export type Question = StandardQuestion | ScenarioQuestion;
+export type Question = ScenarioQuestion;
 
 export interface CharacterMatrix {
-  id: string;
+  id: CharacterId;
   name: string;
   values: Record<DimensionKey, 1 | 2 | 3 | 4 | 5>;
 }
 
 export interface CharacterProfile {
-  id: string;
+  id: CharacterId;
   verdict: string;
   methods: string;
   temperament: string;
@@ -56,7 +59,7 @@ export interface CharacterProfile {
 }
 
 export interface ResultCharacter {
-  id: string;
+  id: CharacterId;
   name: string;
   percent: number;
 }

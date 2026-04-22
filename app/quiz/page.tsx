@@ -4,6 +4,7 @@ import { useEffect, useMemo, useState } from 'react';
 import { useRouter } from 'next/navigation';
 import PageFrame from '@/components/PageFrame';
 import ProgressBar from '@/components/ProgressBar';
+import { TOTAL_QUESTIONS } from '@/lib/constants';
 import { QUESTIONS } from '@/lib/data/questions';
 import { STORAGE_KEYS, readBool, readJSON, writeJSON } from '@/lib/session';
 
@@ -30,8 +31,8 @@ export default function QuizPage() {
   if (!ready || !q) return null;
 
   return (
-    <PageFrame title="后宫人格测评" subtitle="一题一屏，请按直觉和真实反应作答。">
-      <ProgressBar current={index + 1} total={QUESTIONS.length} />
+    <PageFrame title="后宫人格测评" subtitle="你是初入宫的新人小主：请在每个场景里，选最像你的处理方式。">
+      <ProgressBar current={index + 1} total={TOTAL_QUESTIONS} />
       <h2 className="text-lg font-semibold leading-7">{q.text}</h2>
 
       <div className="space-y-2">

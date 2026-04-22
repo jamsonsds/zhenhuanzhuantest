@@ -1,39 +1,154 @@
 import type { CharacterProfile } from '../types';
 
-const genericProfile = (name: string): CharacterProfile => ({
-  id: name,
-  verdict: `你像${name}：心中有尺，手里有招，场面再乱也能守体面。`,
-  methods: '你在复杂关系中的行动方式偏策略型，会先盘面、再出手，且擅长给自己留下后路。',
-  temperament: '你外在情绪有分寸，不轻易失态；真正关键时刻，你会把锋芒留给结果。',
-  affection: '你重视关系中的稳定与信任，不轻许诺，但一旦认定就会持续投入。',
-  highlight: '“这局我不急，但每一步都算数。”',
-  almanacLine: '此人处世如行棋，慢半拍，却往往先到终局。',
-  almanacIntro: `${name}型人格善于在情绪与理性之间找平衡，既有手腕，也有底线。`
-});
-
-export const CHARACTER_PROFILES: Record<string, CharacterProfile> = {
+export const CHARACTER_PROFILES: Record<CharacterProfile['id'], CharacterProfile> = {
   zhenhuan: {
     id: 'zhenhuan',
-    verdict: '你像甄嬛：眼里看得透人心，手里拿得住分寸与胜负。',
-    methods: '你擅长在不确定局势中建立判断路径，常以“先稳后击”的方式完成逆转。',
-    temperament: '你不靠情绪压场，而靠节奏控场。外柔内刚，是你最稀缺的锋芒。',
-    affection: '你重情，但不盲信。你给出的情分，是经过判断后仍选择的认真。',
-    highlight: '“局势越乱，我越清醒。”',
-    almanacLine: '温声不等于退让，藏锋也能定局。',
-    almanacIntro: '甄嬛型人格属于高适应、高洞察的复合型，能在关系与博弈中都保持主动。'
+    verdict: '你像甄嬛：温声落子，却总能在终局把局面握回手中。',
+    methods: '你处理局势的方式是“先稳盘、再换手”。你不会为一时输赢暴露全部底牌，而是通过信息差与时机感完成反制。',
+    temperament: '你的内核很硬，但外层不刺人。你有情绪，却不被情绪牵着走，越在高压场景越能保持清醒判断。',
+    affection: '你对情分是认真且有门槛的。你会给机会，也会给台阶，但若信任被连续透支，你的抽离同样干净。',
+    highlight: '名场面：雪地回身，一句“这回，该我定规矩了。”',
+    almanacLine: '柔而不弱，静中有锋。',
+    almanacIntro: '甄嬛型人格擅长在复杂关系中兼顾人心与胜率，属于“高共情的策略执行者”。'
   },
-  huafei: genericProfile('华妃'),
-  empress: genericProfile('皇后'),
-  meizhuang: genericProfile('沈眉庄'),
-  anlingrong: genericProfile('安陵容'),
-  jingfei: genericProfile('敬妃'),
-  caoguiren: genericProfile('曹贵人'),
-  chuner: genericProfile('淳儿'),
-  emperor: genericProfile('皇帝'),
-  queenmother: genericProfile('太后'),
-  supeisheng: genericProfile('苏培盛'),
-  wenshichu: genericProfile('温实初'),
-  liuzhu: genericProfile('流朱'),
-  cuijinxi: genericProfile('崔槿汐'),
-  guojunwang: genericProfile('果郡王')
+  huafei: {
+    id: 'huafei',
+    verdict: '你像华妃：气场先声夺人，爱恨都明牌，锋芒自带压迫感。',
+    methods: '你偏好高强度直攻。面对冒犯时，你会迅速立边界、抢节奏，以压迫感换来秩序，代价是更容易树敌。',
+    temperament: '你情绪浓度高、行动速度快，不喜欢暧昧灰区。你崇尚“要么不出手，出手就见血”的执行逻辑。',
+    affection: '你在情分里讲“认定”而非“平均分配”。你护短明显，对自己人极好，对背叛零容忍。',
+    highlight: '名场面：珠钗轻敲案面，满殿先静三分。',
+    almanacLine: '火烈如焰，照人也灼人。',
+    almanacIntro: '华妃型人格属于高掌控高情绪表达者，爆发力极强，适合速战局面。'
+  },
+  empress: {
+    id: 'empress',
+    verdict: '你像皇后：不必高声，也能让全局按你的秩序慢慢收拢。',
+    methods: '你擅长系统化布局，重视流程、角色分工与长期牵制。你少有冲动操作，更偏“结构性胜利”。',
+    temperament: '你冷静、克制、善忍耐，擅长把个人情绪与公共表态分离。你的安全感来自可控与可预期。',
+    affection: '你给出的情分往往附带规则与位置。你可以照拂很多人，但真正信任的人极少且筛选严格。',
+    highlight: '名场面：轻描淡写一句“依例办理”，风向已改。',
+    almanacLine: '静水深流，规矩即武器。',
+    almanacIntro: '皇后型人格重结构、重控制、重长期统筹，是典型的秩序型操盘者。'
+  },
+  meizhuang: {
+    id: 'meizhuang',
+    verdict: '你像沈眉庄：端方不软，稳重有骨，清醒里自带分寸与体面。',
+    methods: '你偏向原则驱动型决策，先确认边界再谈合作。你不爱玩花活，但在关键位能给出高质量判断。',
+    temperament: '你情绪节制、人格稳定，不靠喧哗存在。你对自我要求高，对外界期待也有清晰筛选。',
+    affection: '你重情重义，但不盲从。你给出的信任像长期合同，违约一次，续签难度极高。',
+    highlight: '名场面：拂袖而立，“清白与体面，我都要。”',
+    almanacLine: '清正自持，温中见刚。',
+    almanacIntro: '沈眉庄型人格是“原则型稳定者”，在复杂关系中常扮演道义锚点。'
+  },
+  anlingrong: {
+    id: 'anlingrong',
+    verdict: '你像安陵容：敏感而锋利，最会在缝隙里把机会一点点攥紧。',
+    methods: '你擅长微操与逆势求生，能在资源不对等时做出精细反击。你对威胁感知快，防守反击效率高。',
+    temperament: '你对评价极其敏感，自尊与不安并存。你不轻易示弱，但内心对安全感的需求很高。',
+    affection: '你渴望被坚定选择，也害怕被替代。你在情分里常先试探再投入，确认后黏性很强。',
+    highlight: '名场面：低眉一笑，回身却把退路全封。',
+    almanacLine: '细密如针，柔声藏刃。',
+    almanacIntro: '安陵容型人格属于高警觉型适应者，擅长在高压环境中做精细博弈。'
+  },
+  jingfei: {
+    id: 'jingfei',
+    verdict: '你像敬妃：不争风口，却总能把人和事稳稳接在手里。',
+    methods: '你做事讲稳态与可持续，少做高风险冒进。你擅长维护秩序与关系温度，是团队里的“缓冲器”。',
+    temperament: '你情绪低波动、边界清晰，不靠存在感刷胜率。你更相信长期信誉，而非短期喧哗。',
+    affection: '你在情分上耐心且长情，愿意在细节里托住别人。你不爱表忠口号，但行动很实。',
+    highlight: '名场面：灯下轻声一句“先让人坐下再谈理。”',
+    almanacLine: '温厚持重，久处见真章。',
+    almanacIntro: '敬妃型人格是典型的稳定器：风险意识强、情绪治理好、关系维护能力高。'
+  },
+  caoguiren: {
+    id: 'caoguiren',
+    verdict: '你像曹贵人：算盘打在暗处，局却总在你手里悄悄转向。',
+    methods: '你重信息、重筹码、重时点。你擅长用最小代价撬动最大结果，尤其善于借力与借势。',
+    temperament: '你理性、警惕、现实，不迷恋情绪价值。你更关心“可兑现性”，对口号型承诺天然免疫。',
+    affection: '你对情分的定义是“可互保”。你会投入，但一定要看对方是否稳定、是否可靠、是否有担当。',
+    highlight: '名场面：纸扇一合，“人情是账，不是诗。”',
+    almanacLine: '算得明白，活得清醒。',
+    almanacIntro: '曹贵人型人格属于策略计算型，长于复杂局势下的资源置换和风险控制。'
+  },
+  chuner: {
+    id: 'chuner',
+    verdict: '你像淳儿：心里有光，待人真诚，能把冷场都暖成有人味。',
+    methods: '你不是强攻型玩家，你的优势在于降低敌意、提升信任。你能用善意与轻松感打开封闭关系。',
+    temperament: '你情绪表达直接、生命力充沛，讨厌过度算计。你的可贵之处是“真”，但也容易被复杂局利用。',
+    affection: '你在情分里给得快、给得多，偏向全情投入。你需要更清晰的边界来保护自己的真心。',
+    highlight: '名场面：笑着举盏，“这杯先敬真心。”',
+    almanacLine: '天真不等于无力，温暖本身就是力量。',
+    almanacIntro: '淳儿型人格是高共情高情绪表达者，最擅长建立低防御的人际氛围。'
+  },
+  emperor: {
+    id: 'emperor',
+    verdict: '你像皇帝：全局优先，决策果断，最懂如何把人心纳入版图。',
+    methods: '你习惯站在资源与秩序顶层做选择，擅长平衡多方、分配筹码、维持主导。你追求的是可控全局。',
+    temperament: '你理性高于情绪，耐心高于冲动。你会共情，但更看重结构稳定和权力效率。',
+    affection: '你在情分里偏现实，不轻易许诺长期专注。你更习惯“阶段性投入”，而非绑定式忠诚。',
+    highlight: '名场面：抬手定夺，“此事到此，余人听令。”',
+    almanacLine: '局大于人，秩序先于偏爱。',
+    almanacIntro: '皇帝型人格是高掌控高野心的统筹者，擅长在多线压力下保持决策主权。'
+  },
+  queenmother: {
+    id: 'queenmother',
+    verdict: '你像太后：看人看远，守得住规矩，也镇得住风浪。',
+    methods: '你擅长“慢决策、重后果”。你会优先评估制度影响与长期代价，再决定是否出手与出到哪一步。',
+    temperament: '你稳、冷、克制，低情绪波动是你的护城河。你不爱争眼前风头，但擅长定义终局标准。',
+    affection: '你重亲疏有别，也重秩序公平。你给情分会附带教化意味，希望关系能走得正、走得久。',
+    highlight: '名场面：佛珠一转，“该留的留，该止的止。”',
+    almanacLine: '见惯风浪，方知轻重。',
+    almanacIntro: '太后型人格属于高原则高统筹的“终局型管理者”，擅长把局势拉回正轨。'
+  },
+  supeisheng: {
+    id: 'supeisheng',
+    verdict: '你像苏培盛：懂分寸、会办事，最难得是忠诚里还带脑子。',
+    methods: '你擅长在夹层环境中传递信息、调节冲突、完成高难执行。你知道什么时候说、说到哪句为止。',
+    temperament: '你低调、清醒、重边界，不抢戏却常是关键节点的推动者。你习惯把情绪留在背面处理。',
+    affection: '你在情分里重“可托付感”。一旦认主，你会长期稳定投入，并用专业性守住关系安全。',
+    highlight: '名场面：拱手低声，“奴才明白，话只到这一步。”',
+    almanacLine: '不喧不躁，却总在关键处到位。',
+    almanacIntro: '苏培盛型人格是高执行高忠诚型支持者，擅长在复杂体系中做精准协同。'
+  },
+  wenshichu: {
+    id: 'wenshichu',
+    verdict: '你像温实初：医者仁心，情义自持，温柔里有不退让的骨。',
+    methods: '你倾向以专业能力与稳定行动解决危机，不爱权谋短打。你更相信长期照护和可信赖流程。',
+    temperament: '你温和、谨慎、责任感强，对他人痛感极高。你不擅长表演强势，但在关键时刻很能扛。',
+    affection: '你的情分偏“守护型”，慢热却深。你不爱炫耀忠诚，而是把承诺落实在持续行动里。',
+    highlight: '名场面：灯下把脉，“我能做的，是让你安心活着。”',
+    almanacLine: '温而有骨，仁而有界。',
+    almanacIntro: '温实初型人格是高共情高原则的守护者，擅长在失衡关系中提供稳定支持。'
+  },
+  liuzhu: {
+    id: 'liuzhu',
+    verdict: '你像流朱：真心直给，护短到位，关键时刻永远站在你这边。',
+    methods: '你不靠复杂谋划赢面，而靠迅速行动与情感投入。你在危机中执行果断，是典型“先保人后论理”。',
+    temperament: '你热烈、直接、情绪浓度高，不爱弯弯绕。你对关系的判断很直觉，却往往很准。',
+    affection: '你在情分上几乎是满格付出。你把“自己人”放在第一位，愿意为其承担高成本。',
+    highlight: '名场面：雨夜奔走，“我在，你别怕。”',
+    almanacLine: '赤诚如火，情分见真。',
+    almanacIntro: '流朱型人格是高忠诚高情绪表达者，最擅长在关系危机中提供无条件支持。'
+  },
+  cuijinxi: {
+    id: 'cuijinxi',
+    verdict: '你像崔槿汐：进退皆有章法，既会护主，也懂如何护局。',
+    methods: '你是典型的“高级协同者”：懂权力语境、懂风险分层、懂怎样把冲突化成可执行方案。',
+    temperament: '你沉着、稳准、识大体。你不会情绪化决策，擅长在强压环境下保持优雅且有效率。',
+    affection: '你的情分偏成熟型，重责任也重边界。你愿意托底，但不会把关系做成失衡负担。',
+    highlight: '名场面：半步上前，“此处由我来收尾。”',
+    almanacLine: '细节成局，分寸成势。',
+    almanacIntro: '崔槿汐型人格兼具策略与共情，是高可靠度的“关系与事务双核管理者”。'
+  },
+  guojunwang: {
+    id: 'guojunwang',
+    verdict: '你像果郡王：清澈不幼稚，重情也重义，克制里藏着长久担当。',
+    methods: '你不偏爱权术捷径，更倾向以真诚与行动建立信任。遇到冲突时，你会选“长期正确”而非“短期痛快”。',
+    temperament: '你温润、稳定、审美感高，内心有明确价值序。你不争喧闹中心，却有持续影响力。',
+    affection: '你在情分里讲“专一与尊重”。你投入慢，但一旦确定关系，会以高质量陪伴长期兑现。',
+    highlight: '名场面：月下折扇，“我护你，不必喧哗。”',
+    almanacLine: '风骨自成，情义自明。',
+    almanacIntro: '果郡王型人格是高共情高原则的理想主义执行者，重真心也重边界。'
+  }
 };
