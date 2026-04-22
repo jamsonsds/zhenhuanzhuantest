@@ -1,66 +1,43 @@
-# 你的后宫人格鉴定书（V1）
+# 你的后宫人格鉴定书（Next.js + Vercel）
 
-一个可本地运行的娱乐型人格测评站点，完成 30 题后输出 8 维人格画像、最终人物与 2 个相近人物。
+一个可直接部署到 Vercel 的前端测评网站：
+- 30 题（20 标准题 + 10 剧情题）
+- 前端本地计算结果（无数据库、无登录）
+- 输出：最终人物 + 2 个相近人物（百分比）
 
-## 技术方案
+## 技术栈
+- Next.js 14（App Router）
+- TypeScript
+- Tailwind CSS
+- sessionStorage 保存本次测评状态
 
-- **框架**：React + TypeScript + Vite。
-- **路由**：React Router，覆盖首页、引导、答题、生成、结果、图鉴六个页面。
-- **状态管理**：Context + useState（前端内存会话），不依赖后端。
-- **测评引擎**：
-  - 标准题（20）按 4 档选项计分并归一到 1~5。
-  - 剧情题（10）按选项映射到 8 维分值。
-  - 两类题按 `标准:剧情 = 6:4` 进行维度融合。
-  - 与 15 人物矩阵做相似度计算，输出 Top1 + Top2。
-- **可扩展性策略**：
-  - `src/types` 定义稳定域模型。
-  - `src/data` 仅放题库、矩阵、文案，后续可替换为 CMS/API。
-  - `src/engine` 纯函数化，方便 A/B 试验不同打分模型。
-
-## 目录结构
+## 项目结构
 
 ```text
-src/
-  components/
-    PageShell.tsx
-    ProgressHeader.tsx
-    RadarChart.tsx
-    TestContext.tsx
+app/
+  page.tsx                 # 首页
+  guide/page.tsx           # 引导页
+  quiz/page.tsx            # 答题页
+  generate/page.tsx        # 生成页
+  result/page.tsx          # 结果页
+  almanac/page.tsx         # 图鉴页
+  layout.tsx
+  globals.css
+components/
+  PageFrame.tsx
+  ProgressBar.tsx
+  RadarOutline.tsx
+lib/
+  constants.ts
+  types.ts
+  session.ts
   data/
-    characters.ts
-    dimensions.ts
     questions.ts
+    characters.ts
+    characterProfiles.ts
   engine/
     scoring.ts
-  pages/
-    HomePage.tsx
-    IntroPage.tsx
-    QuizPage.tsx
-    GeneratePage.tsx
-    ResultPage.tsx
-    AlmanacPage.tsx
-  styles/
-    global.css
-  types/
-    domain.ts
-  App.tsx
-  main.tsx
 ```
 
-## 启动
-
-```bash
-npm install
-npm run dev
-```
-
-## 后续扩展建议
-
-- 把 `src/data/*.ts` 平滑替换为 JSON 或远程配置。
-- 增加海报组件与 `html2canvas` 导出逻辑。
-- 加入匿名用户 ID + 结果快照存储，实现可分享 URL。
-
-
-## 上线
-
-详见 `DEPLOY.md`，包含 Vercel / Netlify / Cloudflare Pages / Nginx 四种方式，以及 SPA 路由刷新防 404 配置。
+## 一句话部署（小白版）
+请看 `DEPLOY.md`，按“GitHub + Vercel”逐点击步骤操作。

@@ -1,0 +1,19 @@
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+body {
+  @apply bg-palace-bg text-palace-ink;
+}
+
+.card {
+  @apply rounded-2xl border border-palace-line bg-palace-card p-5 shadow-sm;
+}
+
+.btn-primary {
+  @apply rounded-xl bg-palace-main px-4 py-3 text-sm font-medium text-white transition hover:opacity-95 disabled:cursor-not-allowed disabled:opacity-40;
+}
+
+.btn-ghost {
+  @apply rounded-xl border border-palace-line bg-white px-4 py-3 text-sm font-medium text-palace-ink transition hover:bg-stone-50 disabled:cursor-not-allowed disabled:opacity-40;
+}
