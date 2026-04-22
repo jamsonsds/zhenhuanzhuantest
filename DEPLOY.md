@@ -39,3 +39,11 @@ Vercel 会给你一个：
 - 答题页能上一题/下一题
 - 30 题完成后能到结果页
 - 结果页有图鉴入口
+
+## 常见问题：报错找不到 dist
+如果你在 Vercel 构建日志里看到：`No Output Directory named "dist" found`，说明项目设置还残留了旧版 Vite 配置。
+
+处理方法（二选一）：
+1. 到 Vercel 项目设置把 Output Directory 改回默认（留空）
+2. 保持当前仓库中的 `vercel.json`（已固定为 Next.js 的 `.next` 输出）
+
